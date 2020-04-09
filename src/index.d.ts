@@ -33,6 +33,19 @@ declare module "react-native-popup-menu" {
 
   export const MenuProvider: MenuProviderStatic;
 
+  interface BackDropPressEvent {
+    [key: string]: number;
+    pageX: number;
+    pageY: number;
+  }
+
+  interface TriggerLayout {
+    height: number;
+    width: number;
+    x: number;
+    y: number;
+  }
+
   /**
    * Menu
    * @see https://github.com/instea/react-native-popup-menu/blob/master/doc/api.md#menu
@@ -50,7 +63,7 @@ declare module "react-native-popup-menu" {
 
     onClose?(): void;
 
-    onBackdropPress?(): void;
+    onBackdropPress?(e: BackDropPressEvent, t: TriggerLayout): void;
   }
 
   export class Menu extends React.Component<MenuProps> {

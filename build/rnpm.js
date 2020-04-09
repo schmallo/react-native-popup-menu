@@ -1458,13 +1458,13 @@
         return _this._placeholderRef = r;
       });
 
-      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_onBackdropPress", function () {
+      _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_onBackdropPress", function (e) {
         debug('on backdrop press');
 
         var menu = _this._getOpenedMenu();
 
         if (menu) {
-          menu.instance.props.onBackdropPress();
+          menu.instance.props.onBackdropPress(e, menu.triggerLayout);
         }
 
         _this.closeMenu();
