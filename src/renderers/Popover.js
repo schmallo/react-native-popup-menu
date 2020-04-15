@@ -97,7 +97,7 @@ function topProperties(hOptions, vOptions, isRTL) {
   const side = axisNegativeSideProperties(hOptions);
   return {
     position: {
-      top: side.position,
+      top: side.position - popoverPadding * 1.75,
       [getStartPosKey(isRTL)]: centered.position,
     },
     offset: centered.offset,
@@ -110,7 +110,7 @@ function bottomProperties(hOptions, vOptions, isRTL) {
   const side = axisPositiveSideProperties(hOptions);
   return {
     position: {
-      top: side.position,
+      top: side.position + popoverPadding,
       [getStartPosKey(isRTL)]: centered.position,
     },
     offset: centered.offset,

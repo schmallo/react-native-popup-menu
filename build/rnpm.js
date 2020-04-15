@@ -2825,7 +2825,7 @@
     var side = axisNegativeSideProperties(hOptions);
     return {
       position: _defineProperty({
-        top: side.position
+        top: side.position - popoverPadding * 1.75
       }, getStartPosKey(isRTL), centered.position),
       offset: centered.offset,
       placement: 'top'
@@ -2837,7 +2837,7 @@
     var side = axisPositiveSideProperties(hOptions);
     return {
       position: _defineProperty({
-        top: side.position
+        top: side.position + popoverPadding
       }, getStartPosKey(isRTL), centered.position),
       offset: centered.offset,
       placement: 'bottom'
