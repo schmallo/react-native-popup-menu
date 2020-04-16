@@ -267,7 +267,7 @@ export default class MenuProvider extends Component {
     if (menu) {
       menu.instance.props.onBackdropPress(e, menu.triggerLayout);
     }
-    this.closeMenu();
+    // this.closeMenu();
   }
 
   _isInitialized() {

@@ -1465,9 +1465,8 @@
 
         if (menu) {
           menu.instance.props.onBackdropPress(e, menu.triggerLayout);
-        }
+        } // this.closeMenu();
 
-        _this.closeMenu();
       });
 
       _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "_onLayout", function (_ref) {
