@@ -22,7 +22,8 @@ function axisPositiveSideProperties({ tPos, tDim }) {
 
 // computes offsets (off screen overlap) of popover when trying to align it to the center
 function centeringProperties({ oDim, wDim, tPos, tDim }) {
-  const center = Math.round(tPos + (tDim / 2));
+  const adjustedTPos = tPos < 0 ? wDim - tPos : tPos
+  const center = Math.round(adjustedTPos + (tDim / 2));
   const leftOffset = (oDim / 2) - center;
   const rightOffset = center + (oDim / 2) - wDim;
   return { center, leftOffset, rightOffset };
@@ -38,10 +39,11 @@ function centeringProperties({ oDim, wDim, tPos, tDim }) {
 function axisCenteredPositionProperties(options) {
   const { oDim, wDim } = options;
   const { center, leftOffset, rightOffset } = centeringProperties(options);
+
   if (leftOffset > 0 || rightOffset > 0) {
     // right/bottom position is better
     if (leftOffset < rightOffset) {
-      return { offset: rightOffset, position: wDim - oDim };
+      return { offset: options.tPos < 0 ? options.tDim / 2 : rightOffset, position: wDim - oDim };
     }
     // left/top position is better
     if (rightOffset < leftOffset) {
@@ -248,6 +250,7 @@ export default class Popover extends React.Component {
       preferredPlacement,
       isRTL,
     );
+
     return (
       <Animated.View
         style={[

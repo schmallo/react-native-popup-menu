@@ -2719,7 +2719,8 @@
         wDim = _ref3.wDim,
         tPos = _ref3.tPos,
         tDim = _ref3.tDim;
-    var center = Math.round(tPos + tDim / 2);
+    var adjustedTPos = tPos < 0 ? wDim - tPos : tPos;
+    var center = Math.round(adjustedTPos + tDim / 2);
     var leftOffset = oDim / 2 - center;
     var rightOffset = center + oDim / 2 - wDim;
     return {
@@ -2750,7 +2751,7 @@
       // right/bottom position is better
       if (leftOffset < rightOffset) {
         return {
-          offset: rightOffset,
+          offset: options.tPos < 0 ? options.tDim / 2 : rightOffset,
           position: wDim - oDim
         };
       } // left/top position is better
